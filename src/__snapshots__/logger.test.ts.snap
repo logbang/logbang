@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic logging 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "level": 2,
+    "logger": "testing",
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`basic logging with context and payload 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "cool": true,
+    "country": "uk",
+    "foo": "baz",
+    "level": 2,
+    "logger": "testing",
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`basic logging with payload 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "foo": "bar",
+    "level": 2,
+    "logger": "testing",
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`child logger with context and payload 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "cool": true,
+    "foo": "baz",
+    "hello": "world",
+    "level": 2,
+    "logger": "testing:testchild",
+    "meh": true,
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
