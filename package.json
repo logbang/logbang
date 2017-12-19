@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "tsc",
     "test": "jest --coverage",
-    "lint": "tslint",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prepush": "npm run compile && npm run lint && npm test"
   },
   "repository": {
