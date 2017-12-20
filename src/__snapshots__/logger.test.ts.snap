@@ -4,6 +4,7 @@ exports[`basic logging 1`] = `
 Array [
   Object {
     "__f": "logbang:1",
+    "ctx": Object {},
     "level": 2,
     "logger": "testing",
     "msg": "hello world",
@@ -16,9 +17,11 @@ exports[`basic logging with context and payload 1`] = `
 Array [
   Object {
     "__f": "logbang:1",
-    "cool": true,
-    "country": "uk",
-    "foo": "baz",
+    "ctx": Object {
+      "cool": true,
+      "country": "uk",
+      "foo": "baz",
+    },
     "level": 2,
     "logger": "testing",
     "msg": "hello world",
@@ -31,7 +34,9 @@ exports[`basic logging with payload 1`] = `
 Array [
   Object {
     "__f": "logbang:1",
-    "foo": "bar",
+    "ctx": Object {
+      "foo": "bar",
+    },
     "level": 2,
     "logger": "testing",
     "msg": "hello world",
@@ -44,12 +49,78 @@ exports[`child logger with context and payload 1`] = `
 Array [
   Object {
     "__f": "logbang:1",
-    "cool": true,
-    "foo": "baz",
-    "hello": "world",
+    "ctx": Object {
+      "cool": true,
+      "foo": "baz",
+      "hello": "world",
+      "meh": true,
+    },
     "level": 2,
     "logger": "testing:testchild",
-    "meh": true,
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`provides sugar api for debug 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "ctx": Object {
+      "cool": true,
+      "foo": "baz",
+    },
+    "level": 3,
+    "logger": "testing",
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`provides sugar api for error 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "ctx": Object {
+      "cool": true,
+      "foo": "baz",
+    },
+    "level": 0,
+    "logger": "testing",
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`provides sugar api for info 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "ctx": Object {
+      "cool": true,
+      "foo": "baz",
+    },
+    "level": 2,
+    "logger": "testing",
+    "msg": "hello world",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`provides sugar api for warning 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "ctx": Object {
+      "cool": true,
+      "foo": "baz",
+    },
+    "level": 1,
+    "logger": "testing",
     "msg": "hello world",
     "time": 1514764800000,
   },

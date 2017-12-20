@@ -41,3 +41,12 @@ test('child logger with context and payload', () => {
   logger.log(Level.Info, 'hello world', { foo: 'baz', cool: true });
   expect(spy.mock.calls[0]).toMatchSnapshot();
 });
+
+['error', 'warning', 'info', 'debug'].forEach(level => {
+  test(`provides sugar api for ${level}`, () => {
+    const logger = Logger('testing');
+    const spy = jest.spyOn(logger, 'emit');
+    logger[level]('hello world', { foo: 'baz', cool: true });
+    expect(spy.mock.calls[0]).toMatchSnapshot();
+  });
+});
