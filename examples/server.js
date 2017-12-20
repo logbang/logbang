@@ -1,16 +1,3 @@
-# log!
-
-logbang (aka log!) is a simple, structured logging library. This repository implements a logger for node.js and browsers. It also acts as the reference implementation for log!
-
-## Install
-
-```
-npm install logbang
-```
-
-## Usage
-
-```js
 const express = require('express');
 const ms = require('ms');
 const onHeaders = require('on-headers');
@@ -49,4 +36,3 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => res.send('Hello World!'));
 
 app.listen(3000, () => logger.info('Example app listening on port 3000!'));
-```
