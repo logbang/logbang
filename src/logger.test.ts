@@ -13,21 +13,21 @@ afterEach(() => {
 test('basic logging', () => {
   const logger = Logger('testing');
   const spy = jest.spyOn(logger, 'emit');
-  logger.log(Level.INFO, 'hello world');
+  logger.log(Level.Info, 'hello world');
   expect(spy.mock.calls[0]).toMatchSnapshot();
 });
 
 test('basic logging with payload', () => {
   const logger = Logger('testing');
   const spy = jest.spyOn(logger, 'emit');
-  logger.log(Level.INFO, 'hello world', { foo: 'bar' });
+  logger.log(Level.Info, 'hello world', { foo: 'bar' });
   expect(spy.mock.calls[0]).toMatchSnapshot();
 });
 
 test('basic logging with context and payload', () => {
   const logger = Logger('testing', { foo: 'bar', country: 'uk' });
   const spy = jest.spyOn(logger, 'emit');
-  logger.log(Level.INFO, 'hello world', { foo: 'baz', cool: true });
+  logger.log(Level.Info, 'hello world', { foo: 'baz', cool: true });
   expect(spy.mock.calls[0]).toMatchSnapshot();
 });
 
@@ -38,6 +38,6 @@ test('child logger with context and payload', () => {
     meh: true,
   });
   const spy = jest.spyOn(logger, 'emit');
-  logger.log(Level.INFO, 'hello world', { foo: 'baz', cool: true });
+  logger.log(Level.Info, 'hello world', { foo: 'baz', cool: true });
   expect(spy.mock.calls[0]).toMatchSnapshot();
 });
