@@ -1,3 +1,7 @@
+<p align="center">
+![logbang logo](./docs/logbang_slim.png)
+</p>
+
 # log!
 
 logbang (aka log!) is a simple, structured logging library. This repository implements a logger for node.js and browsers. It also acts as the reference implementation for log!
