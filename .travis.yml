@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- lts/*
+script: npm run validate
+after_script: rm -rf coverage
+
+deploy:
+  - provider: npm
+    email: ghaidar0@gmail.com
+    api_key:
+      secure: tkw+3eB0QthW9pkY7AcoSj///CcGV2FT31jOimanBomBJSivkA5iZaJYCKBky78xLflctG5qAray4WRsEGKpRPpU4SsXnY1q60U4NsPHtYqVaV9NK6Ln0+Q+AAJGpckCcfcbU5xuctpGZjHwueRbM1CZpU6LZtpHTbk0NYNg/TwM5LfJFmYR6PaLEW3H1ypzAyJxVf0DqQ/JlGtM4RM2n2Emn/sB46m55rGVaW3ZN3MJ7ConK/p1CKWxv3lsOCoD+if88eA6vpGQaCE/RZbCuIVV8BEhKKcfQqyIcTFWiBhVACLXIwvcarzBTJGGJXBGniZ9YUC/ur79YvNdYnBEmUW3nHuNqZod2BXJM4tTXSxbK80p72+r+yY6FNNnV5B2b2F96JM2gAtHvrRxaaYffqcwV0lMqKrRqHLWDxfcapnguzBHirMfH0ZtDypysI+bEWYB8EH9BwyBuWlpO11Qm3UuoTRb8uiC2ehsFhAtKU6m7CEeV5eitaBXr6D9Mp5uKtDi0ftVilYx2PsuKPWj8hDYlvqF38xQet78evuMyVFQT2rf3p50XT+XvTZe6wiIyUtAn8gNbeRHM2/oZ8vODcRZwUjST51C5Pzx/tt5iNMkfNW8r2XmNwed6lmxzdYHeRygXFN0peQss6zTFRlyPZzRZnZ2+dakGniBoH2NsHI=
+    on:
+      tags: true
+      repo: logbang/logbang
+  - provider: releases
+    api_key:
+      secure: X5sxttkKBG3NN0nJ0k33kVdmy7Ccb1sRrDYe4E45JGYlxVYCCdQI7FNmqHo5EIr/GYkES6+NXX3TynNjrUHtHqVgfn93U5WrI4qFVNysJHB4Rd4nLyJd+4Bg/I7h4vZlQqseXk5fKewk/Q2yR7x5/IDip/D1esqrMjz76cUCVpvxFE8RV3DKs+Axw976gOrH94XvnJsN5ZvGEqQqEILlX9WI0wYFY4UxTbsFmyy8iv+gS3BLzNKSlsyezjkW5Je+QCw59j47OcPrmj7VyJGUaStPbhGS6ddYK4VQJffrrIQk2f9KtCfIrSra+WL0kA9tDcZ09jzUFdyCWpoFliB+D53VQF0Qh077BQXp7U5gygF/KSRwEemPmbmzZZ6B4yVh7H1qUU2/usP/daqQ31SqLQAm5NHgu7TrEadG6c4i9+RxgwHLN2HD0jfrjJVWmXzUmAG26B3O3YYQF2qY5SY1SFckHZi3/tEo/uSmXdQDyEuN2kaXvP945FVC8GmB/HSyMcBr3lmYxRSF3HN2gr34RrwCLOjH4wBsMgxzyKpphs9IRfW6APlES+oDEr+927kRxW3qhkokBPX3d+14GDvPUuu4VUGGylQMfAfFqqWNCOfDS0xi3GSVG7ovrC+RmTU0DoZ2OEov4dc7IOGDE2OP81GZTWET08yGyQI9D2QwX7s=
+    on:
+      tags: true
+      repo: logbang/logbang
