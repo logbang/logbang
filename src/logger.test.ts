@@ -45,7 +45,11 @@ test('child logger with context and payload', () => {
 test('serialized basic errors', () => {
   const logger = Logger('testing');
   const spy = jest.spyOn(logger, 'emit');
-  logger.log(Level.Info, 'fail whale', { error: new Error('oops') });
+  const error = new Error('oops');
+  Object.defineProperty(error, 'stack', {
+    value: 'deterministic stack\nat line 1\nat line 2',
+  });
+  logger.log(Level.Info, 'fail whale', { error });
   expect(spy.mock.calls[0]).toMatchSnapshot();
 });
 
