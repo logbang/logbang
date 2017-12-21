@@ -1,6 +1,7 @@
 const express = require('express');
 const ms = require('ms');
 const onHeaders = require('on-headers');
+const prettyHrtime = require('pretty-hrtime');
 const uuidv4 = require('uuid/v4');
 const { default: Logger, Level } = require('..');
 
@@ -11,28 +12,46 @@ const logger = Logger('helloservice', { pid: process.pid });
 // add a correlation id on incoming requests
 app.use((req, res, next) => {
   const id = uuidv4();
+  const { method, originalUrl } = req;
   req.id = id;
   res.set('x-request-id', id);
-  req.logger = logger.child('http', { id });
+  req.logger = logger.child('http', {
+    id,
+    method,
+    originalUrl,
+  });
   next();
 });
 
 app.use((req, res, next) => {
-  const started = Date.now();
+  const started = process.hrtime();
   const { method, originalUrl } = req;
   onHeaders(res, () => {
-    const d = Date.now() - started;
+    const elapsed = process.hrtime(started);
+    const ns = elapsed[0] * 1e9 + elapsed[1];
     const { statusCode } = res;
-    req.logger.info(`${method} ${originalUrl} -> ${statusCode} in ${ms(d)}`, {
-      duration: d,
-      statusCode,
-      method,
-      originalUrl,
-    });
+    req.logger.debug(
+      `${method} ${originalUrl} -> ${statusCode} in ${prettyHrtime(elapsed)}`,
+      {
+        duration: ns,
+        status: statusCode,
+      },
+    );
   });
   next();
 });
 
 app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/fail', (req, res) => {
+  throw new Error('woops');
+});
+
+app.use((error, req, res, next) => {
+  req.logger.error(error.message, {
+    // expose err fields explicitly in log payload since some are not enumerable
+    error,
+  });
+  res.status(500).json({ id: req.id, detail: 'Unexpected error occured' });
+});
 
 app.listen(3000, () => logger.info('Example app listening on port 3000!'));
