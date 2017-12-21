@@ -1,5 +1,5 @@
 <p align="center">
-![logbang logo](./docs/logbang_slim.png)
+  <img src="./docs/logbang_slim.png" alt="logbang logo" />
 </p>
 
 # log!
