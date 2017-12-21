@@ -3,22 +3,19 @@
   "version": "0.0.0",
   "description": "Simple structured logger for browsers and node.js",
   "main": "dist/logger.js",
+  "files": ["dist"],
   "scripts": {
     "compile": "tsc",
     "test": "jest --coverage",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "prepush": "npm run compile && npm run lint && npm test"
+    "validate": "npm run compile && npm run lint && npm test",
+    "prepush": "npm run validate"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/logbang/logbang.git"
   },
-  "keywords": [
-    "logging",
-    "typescript",
-    "nodejs",
-    "browser"
-  ],
+  "keywords": ["logging", "typescript", "nodejs", "browser"],
   "author": "Georges Haidar <ghaidar0@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -46,14 +43,7 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "mapCoverage": true
   }
 }
