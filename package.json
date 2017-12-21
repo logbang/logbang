@@ -1,6 +1,6 @@
 {
   "name": "logbang",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple structured logger for browsers and node.js",
   "main": "dist/logger.js",
   "files": [
