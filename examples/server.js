@@ -3,7 +3,7 @@ const ms = require('ms');
 const onHeaders = require('on-headers');
 const prettyHrtime = require('pretty-hrtime');
 const uuidv4 = require('uuid/v4');
-const { default: Logger, Level } = require('..');
+const { default: Logger } = require('..');
 
 const app = express();
 
