@@ -126,3 +126,48 @@ Array [
   },
 ]
 `;
+
+exports[`respects serializable errors 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "ctx": Object {
+      "error": Object {
+        "name": "serializable error",
+        "stack": "nothing to report",
+      },
+    },
+    "level": 2,
+    "logger": "testing",
+    "msg": "fail whale",
+    "time": 1514764800000,
+  },
+]
+`;
+
+exports[`serialized basic errors 1`] = `
+Array [
+  Object {
+    "__f": "logbang:1",
+    "ctx": Object {
+      "error": Object {
+        "message": "oops",
+        "name": "Error",
+        "stack": "Error: oops
+    at Object.<anonymous> (/Users/georgeshaider/Work/oss/logbang/logbang/src/logger.test.ts:48:49)
+    at Object.asyncFn (/Users/georgeshaider/Work/oss/logbang/logbang/node_modules/jest-jasmine2/build/jasmine_async.js:124:345)
+    at resolve (/Users/georgeshaider/Work/oss/logbang/logbang/node_modules/jest-jasmine2/build/queue_runner.js:51:12)
+    at new Promise (<anonymous>)
+    at mapper (/Users/georgeshaider/Work/oss/logbang/logbang/node_modules/jest-jasmine2/build/queue_runner.js:40:274)
+    at promise.then (/Users/georgeshaider/Work/oss/logbang/logbang/node_modules/jest-jasmine2/build/queue_runner.js:83:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)",
+      },
+    },
+    "level": 2,
+    "logger": "testing",
+    "msg": "fail whale",
+    "time": 1514764800000,
+  },
+]
+`;

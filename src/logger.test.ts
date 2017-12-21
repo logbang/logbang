@@ -42,6 +42,28 @@ test('child logger with context and payload', () => {
   expect(spy.mock.calls[0]).toMatchSnapshot();
 });
 
+test('serialized basic errors', () => {
+  const logger = Logger('testing');
+  const spy = jest.spyOn(logger, 'emit');
+  logger.log(Level.Info, 'fail whale', { error: new Error('oops') });
+  expect(spy.mock.calls[0]).toMatchSnapshot();
+});
+
+test('respects serializable errors', () => {
+  const logger = Logger('testing');
+  const spy = jest.spyOn(logger, 'emit');
+  const error = {
+    toJSON() {
+      return {
+        name: 'serializable error',
+        stack: 'nothing to report',
+      };
+    },
+  };
+  logger.log(Level.Info, 'fail whale', { error });
+  expect(spy.mock.calls[0]).toMatchSnapshot();
+});
+
 ['error', 'warning', 'info', 'debug'].forEach(level => {
   test(`provides sugar api for ${level}`, () => {
     const logger = Logger('testing');
