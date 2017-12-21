@@ -9,6 +9,7 @@
     "test": "jest --coverage",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "validate": "npm run compile && npm run lint && npm test",
+    "preversion": "npm run validate",
     "prepush": "npm run validate"
   },
   "repository": {
